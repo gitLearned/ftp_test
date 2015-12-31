@@ -1,0 +1,27 @@
+
+apply plugin: 'java'
+apply plugin: 'maven'
+apply plugin: 'spring-boot'
+buildscript{
+  repositories{
+    mavenLocal()
+    maven { url "${repo_central}" }
+    maven { url "http://repo.spring.io/release" }
+    maven { url 'http://repo.spring.io/plugins-release' }
+  }
+  dependencies { classpath "org.springframework.boot:spring-boot-gradle-plugin:$springBootVersion" }
+}
+
+
+repositories {
+  mavenLocal()
+  maven { url project.ext.repo_central }
+  maven { url project.ext.repo_thirdparty }
+  maven { url project.ext.repo_release }
+  maven { url project.ext.repo_snapshot}
+}
+
+dependencies {
+  compile 'commons-net:commons-net:3.4'
+  compile 'org.springframework.boot:spring-boot-starter-log4j'
+}
